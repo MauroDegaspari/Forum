@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.maurodev.forum.modelo.Topico;
+import br.com.maurodev.forum.model.Topico;
 
 public class TopicoDto {
 
@@ -35,9 +35,9 @@ public class TopicoDto {
 		return dataCriacao;
 	}
 
-	public static List<TopicoDto> converter(List<Topico> topicos) {
+	public static List<TopicoDto> converter(List<Topico> topico) {
 	
-		return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
+		return topico.stream().map(TopicoDto::new).collect(Collectors.toList());
 	}
 	
 	

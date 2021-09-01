@@ -1,4 +1,4 @@
-package br.com.maurodev.forum.modelo;
+package br.com.maurodev.forum.model;
 
 public enum StatusTopico {
 	
