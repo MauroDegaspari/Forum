@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.maurodev.forum.controller.form.TopicoForm;
+import br.com.maurodev.forum.dto.DetalhesTopicoDto;
 import br.com.maurodev.forum.dto.TopicoDto;
 import br.com.maurodev.forum.model.Topico;
 import br.com.maurodev.forum.repository.CursoRepository;
@@ -49,6 +51,12 @@ public class TopicoController {
 			return ResponseEntity.created(uri).body(new TopicoDto(topico));
 		}
 		
+		@GetMapping("/{id}")
+		public DetalhesTopicoDto detalhar(@PathVariable Long id) {
+			Topico topico = repo.getOne(id);
+			return new DetalhesTopicoDto(topico);
+		}
+		
 	}
 	
 	/* 
@@ -61,6 +69,7 @@ public class TopicoController {
 		INSERT INTO TOPICO(titulo, mensagem, data_criacao, status, autor_id, curso_id) VALUES('Dúvida 2', 'Projeto não compila', '2019-05-05 19:00:00', 'NAO_RESPONDIDO', 1, 1);
 		INSERT INTO TOPICO(titulo, mensagem, data_criacao, status, autor_id, curso_id) VALUES('Dúvida 3', 'Tag HTML', '2019-05-05 20:00:00', 'NAO_RESPONDIDO', 1, 2);
 
+		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
 	*/
 	
 	 
